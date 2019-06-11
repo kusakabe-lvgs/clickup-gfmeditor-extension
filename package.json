@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "watch": "parcel watch src/clickup.tsx -d clickup-gfmeditor --log-level 4 --no-hmr",
+    "tslint": "tslint --fix 'src/**/*.ts'",
+    "prettier": "prettier --write src/**/*.{ts,tsx}"
+  },
   "devDependencies": {
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
