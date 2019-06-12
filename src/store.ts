@@ -1,10 +1,10 @@
 import { createStore, combineReducers } from 'redux';
 
-export type AppState = {
-};
+import gfmEditorWriteReducer from './modules/gfmEditor/write';
 
 const store = createStore(
-  combineReducers<AppState>({
+  combineReducers({
+    gfmEditorWrite: gfmEditorWriteReducer,
   })
 );
 
