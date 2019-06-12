@@ -1,16 +1,14 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import configureStore from "./configureStore";
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import Store from './store';
 
-const store = configureStore();
+import GfmEditorWrite from './containers/gfmEditor/write';
 
-
-ReactDOM.render(
-  <Provider store={store}>
-    <div>
-      Hello world.
-    </div>
-  </Provider>,
-  document.querySelector(".app")
+const App = () => (
+  <Provider store={Store}>
+    <GfmEditorWrite />
+  </Provider>
 );
+
+ReactDOM.render(<App />, document.querySelector('.app'));
