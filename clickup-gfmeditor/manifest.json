@@ -1,0 +1,13 @@
+{
+  "name": "clickup gfm editor extension",
+  "description" : "Replace clickup editor with GFM.",
+  "version": "1.0",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["https://app.clickup.com/t/*"],
+      "js": ["./clickup.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
