@@ -29,7 +29,6 @@ const findTargetList = (retry_counter: number): any => {
     clearInterval(tryGetList);
   }
 };
-console.log('foo');
 
 const tryGetList = setInterval(findTargetList, 1000);
 
