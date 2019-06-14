@@ -4,10 +4,14 @@ const initialState = {
 
 interface IGfmEditorPreviewState {
   type: string;
+}
+
+interface IGfmEditorPreviewAction extends IGfmEditorPreviewState {
+  type: string;
   value: string;
 }
 
-const gfmEditorPreviewReducer = (state = initialState, action: IGfmEditorPreviewState) => {
+const GfmEditorPreviewReducer = (state = initialState, action: IGfmEditorPreviewAction) => {
   switch (action.type) {
     case 'TEST':
       return { ...state, ...{ value: action.value } };
@@ -20,4 +24,5 @@ export const test = (foo: string) => {
   return { type: 'TEST', value: foo };
 };
 
-export default gfmEditorPreviewReducer;
+export { IGfmEditorPreviewState };
+export { GfmEditorPreviewReducer };

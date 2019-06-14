@@ -2,9 +2,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import GfmEditorPreviewComponent from '../../components/gfmEditor/preview';
-import * as GfmEditorPreviewModule from '../../modules/gfmEditor/preview';
+import { IGfmEditorPreviewState, GfmEditorPreviewReducer } from '../../modules/gfmEditor/preview';
 
-const mapStateToProps = (state: any) => {
+interface IAppProps {
+  gfmEditorPreview: IGfmEditorPreviewState;
+}
+
+const mapStateToProps = (state: IAppProps) => {
   return {
     gfmEditorPreview: state.gfmEditorPreview,
   };
@@ -12,7 +16,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    ...bindActionCreators(GfmEditorPreviewModule, dispatch),
+    ...bindActionCreators(GfmEditorPreviewReducer, dispatch),
   };
 };
 
