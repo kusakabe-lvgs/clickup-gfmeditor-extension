@@ -7,7 +7,6 @@ interface IGfmEditorPreviewState {
 }
 
 interface IGfmEditorPreviewAction extends IGfmEditorPreviewState {
-  type: string;
   value: string;
 }
 
