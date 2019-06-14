@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "watch": "parcel watch src/clickup.tsx -d clickup-gfmeditor --log-level 4 --no-hmr",
+    "watch": "parcel watch src/clickup.ts -d clickup-gfmeditor --log-level 4 --no-hmr",
     "tslint": "tslint --fix src/**/*.{ts,tsx}",
     "prettier": "prettier --write src/**/*.{ts,tsx}"
   },
