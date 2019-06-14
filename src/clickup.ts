@@ -4,7 +4,7 @@ import App from './app';
 const MAX_RETRY_COUNT = 10;
 let retryCounter = 0;
 
-const findTargetList = (): any => {
+const findTargetList = () => {
   // try数を記録する
   retryCounter++;
 
