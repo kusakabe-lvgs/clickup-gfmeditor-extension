@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 const GfmEditorWrite: React.SFC = (props: any) => {
-  return <div>Editor.</div>;
+  return <div className="ql-editor">Editor.</div>;
 };
 
 export default GfmEditorWrite;
