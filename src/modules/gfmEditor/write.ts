@@ -1,21 +1,22 @@
 const initialState = {
-  type: '',
+  value: '',
 };
 
 interface IGfmEditorWriteState {
   type: string;
+  value: string;
 }
 
 const gfmEditorWriteReducer = (state = initialState, action: IGfmEditorWriteState) => {
   switch (action.type) {
     case 'TEST':
-      return [...state, { foo: action.value }];
+      return { ...state, ...{ value: action.value } };
     default:
       return state;
   }
 };
 
-const test = (foo: string) => {
+export const test = (foo: string) => {
   return { type: 'TEST', value: foo };
 };
 
