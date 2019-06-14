@@ -24,7 +24,7 @@ const findTargetList = (retry_counter: number): any => {
   // DOMが取れたらeditorの置き換えをする
   if (taskCards.length) {
     // dom(<HTMLDivElement>document.querySelector('.ql-editor'));
-    const ele: HTMLDivElement = document.querySelector('.ql-editor');
+    const ele: HTMLDivElement = document.querySelector('.ql-editor').parentNode;
     App(ele);
     // replaceEditor(taskCards);
     clearInterval(tryGetList);
