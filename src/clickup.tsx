@@ -38,6 +38,6 @@ const App = (ele: HTMLDivElement) => {
     <Provider store={Store}>
       <GfmEditorWrite />
     </Provider>,
-    document.querySelector('.app')
+    ele
   );
 };
