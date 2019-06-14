@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+
 import GfmEditorWriteComponent from '../../components/gfmEditor/write';
-import * as TopModule from '../../modules/gfmEditor/write';
+import * as GfmEditorWriteModule from '../../modules/gfmEditor/write';
 
 const mapStateToProps = (state: any) => {
   return {
-    top: state.top,
+    gfmEditorWrite: state.gfmEditorWrite,
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    ...bindActionCreators(TopModule, dispatch),
+    ...bindActionCreators(GfmEditorWriteModule, dispatch),
   };
 };
 
