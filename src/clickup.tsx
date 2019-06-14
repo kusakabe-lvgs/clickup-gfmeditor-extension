@@ -5,10 +5,39 @@ import Store from './store';
 
 import GfmEditorWrite from './containers/gfmEditor/write';
 
-const App = () => (
-  <Provider store={Store}>
-    <GfmEditorWrite />
-  </Provider>
-);
+// DOMを取得のリトライ上限
+const MAX_RETRY_COUNT = 10;
+let retryCounter = 0;
 
-ReactDOM.render(<App />, document.querySelector('.app'));
+const findTargetList = (retry_counter: number): any => {
+  // try数を記録する
+  retryCounter++;
+
+  const taskCards: NodeList | null = document.querySelectorAll('.cu-panel-board__clickable-card');
+
+  // max retry数を超えると止める
+  if (retry_counter >= MAX_RETRY_COUNT) {
+    clearInterval(tryGetList);
+  }
+
+  // DOMが取れたらeditorの置き換えをする
+  if (taskCards.length) {
+    // dom(<HTMLDivElement>document.querySelector('.ql-editor'));
+    const ele: HTMLDivElement = document.querySelector('.ql-editor');
+    App(ele);
+    // replaceEditor(taskCards);
+    clearInterval(tryGetList);
+  }
+};
+console.log('foo');
+
+const tryGetList = setInterval(findTargetList, 1000);
+
+const App = (ele: HTMLDivElement) => {
+  ReactDOM.render(
+    <Provider store={Store}>
+      <GfmEditorWrite />
+    </Provider>,
+    document.querySelector('.app')
+  );
+};
