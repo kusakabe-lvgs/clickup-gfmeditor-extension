@@ -2,9 +2,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import GfmEditorWriteComponent from '../../components/gfmEditor/write';
-import * as GfmEditorWriteModule from '../../modules/gfmEditor/write';
+import { IGfmEditorWriteState, GfmEditorWriteReducer } from '../../modules/gfmEditor/write';
 
-const mapStateToProps = (state: any) => {
+interface IAppProps {
+  gfmEditorWrite: IGfmEditorWriteState;
+}
+
+const mapStateToProps = (state: IAppProps) => {
   return {
     gfmEditorWrite: state.gfmEditorWrite,
   };
@@ -12,7 +16,7 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    ...bindActionCreators(GfmEditorWriteModule, dispatch),
+    ...bindActionCreators(GfmEditorWriteReducer, dispatch),
   };
 };
 
