@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import Store from './store';
 
 import GfmEditorWrite from './containers/gfmEditor/write';
+import GfmEditorPreview from './containers/gfmEditor/preview';
 
 // DOMを取得のリトライ上限
 const MAX_RETRY_COUNT = 10;
@@ -36,6 +37,7 @@ const App = (ele: HTMLDivElement) => {
   ReactDOM.render(
     <Provider store={Store}>
       <GfmEditorWrite />
+      <GfmEditorPreview />
     </Provider>,
     ele
   );
