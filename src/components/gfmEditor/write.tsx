@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const GfmEditorWrite: React.SFC = (props: any) => {
+const GfmEditorWrite: React.SFC = () => {
   return <div>Editor.</div>;
 };
 
