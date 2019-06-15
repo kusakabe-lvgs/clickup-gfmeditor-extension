@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import GfmEditorPreviewComponent from '../../components/gfmEditor/preview';
 import { IGfmEditorPreviewState, GfmEditorPreviewReducer } from '../../modules/gfmEditor/preview';
@@ -14,7 +14,7 @@ const mapStateToProps = (state: IAppProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     ...bindActionCreators(GfmEditorPreviewReducer, dispatch),
   };

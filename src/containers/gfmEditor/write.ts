@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, Dispatch } from 'redux';
 
 import GfmEditorWriteComponent from '../../components/gfmEditor/write';
 import { IGfmEditorWriteState, GfmEditorWriteReducer } from '../../modules/gfmEditor/write';
@@ -14,7 +14,7 @@ const mapStateToProps = (state: IAppProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     ...bindActionCreators(GfmEditorWriteReducer, dispatch),
   };
