@@ -12,16 +12,19 @@ interface IGfmEditorWriteAction extends IGfmEditorWriteState {
 
 const GfmEditorWriteReducer = (state = initialState, action: IGfmEditorWriteAction) => {
   switch (action.type) {
-    case 'TEST':
+    case 'CHANGE_FORM_HANDLER':
       return { ...state, ...{ value: action.value } };
     default:
       return state;
   }
 };
 
-export const test = (foo: string) => {
-  return { type: 'TEST', value: foo };
+const GfmEditorWriteAction = {
+  changeFormHandler(params: string): IGfmEditorWriteAction {
+    return { type: 'CHANGE_FORM_HANDLER', value: params };
+  },
 };
 
 export { IGfmEditorWriteState };
 export { GfmEditorWriteReducer };
+export { GfmEditorWriteAction };
