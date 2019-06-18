@@ -1,12 +1,10 @@
 import { createStore, combineReducers } from 'redux';
 
-import { GfmEditorWriteReducer } from './modules/gfmEditor/write';
-import { GfmEditorPreviewReducer } from './modules/gfmEditor/preview';
+import { GfmEditorReducer } from './modules/gfmEditor';
 
 const store = createStore(
   combineReducers({
-    gfmEditorWrite: GfmEditorWriteReducer,
-    gfmEditorPreview: GfmEditorPreviewReducer,
+    gfmEditor: GfmEditorReducer,
   })
 );
 
