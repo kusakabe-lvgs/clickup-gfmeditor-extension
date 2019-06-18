@@ -14,9 +14,7 @@ const GfmEditorWrite = (props: IGfmEditorProps) => {
       contentEditable={true}
       onInput={e => props.changeFormHandler((e.target as HTMLDivElement).innerText)}
       suppressContentEditableWarning={true}
-    >
-      {props.gfmEditor.value}
-    </div>
+    />
   );
 };
 
