@@ -23,4 +23,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(GfmEditorPreviewComponent);
+)(GfmEditorPreviewComponent as any);
