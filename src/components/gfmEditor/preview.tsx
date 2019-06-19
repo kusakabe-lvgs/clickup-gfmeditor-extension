@@ -3,17 +3,18 @@ import { Marked } from 'marked-ts';
 
 interface IGfmEditorProps {
   gfmEditor: { value: string };
+  canShowed: boolean;
 }
 
 const GfmEditorPreview = (props: IGfmEditorProps) => {
-  return (
+  return props.canShowed ? (
     <div
       className="ql-editor"
       dangerouslySetInnerHTML={{
         __html: Marked.parse(props.gfmEditor.value),
       }}
     />
-  );
+  ) : null;
 };
 
 export default GfmEditorPreview;
