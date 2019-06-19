@@ -2,15 +2,18 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import GfmEditorWriteComponent from '../../components/gfmEditor/write';
-import { IGfmEditorState, GfmEditorReducer, GfmEditorAction } from '../../modules/gfmEditor';
+import { IGfmEditorAction, GfmEditorReducer, GfmEditorAction } from '../../modules/gfmEditor';
+import { IToolbarAction } from '../../modules/toolbar';
 
 interface IAppProps {
-  gfmEditor: IGfmEditorState;
+  gfmEditor: IGfmEditorAction;
+  toolbar: IToolbarAction;
 }
 
 const mapStateToProps = (state: IAppProps) => {
   return {
     gfmEditor: state.gfmEditor,
+    canShowed: state.toolbar.selected === 'Write' ? true : false,
   };
 };
 
