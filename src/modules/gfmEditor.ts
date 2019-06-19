@@ -23,5 +23,5 @@ const GfmEditorAction = {
 };
 
 export { IGfmEditorAction };
-export { GfmEditorReducer };
 export { GfmEditorAction };
+export { GfmEditorReducer };
