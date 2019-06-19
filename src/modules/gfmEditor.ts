@@ -2,11 +2,8 @@ const initialState = {
   value: '',
 };
 
-interface IGfmEditorState {
-  type: string;
-}
-
-interface IGfmEditorAction extends IGfmEditorState {
+interface IGfmEditorAction {
+  readonly type: string;
   value: string;
 }
 
@@ -25,6 +22,6 @@ const GfmEditorAction = {
   },
 };
 
-export { IGfmEditorState };
+export { IGfmEditorAction };
 export { GfmEditorReducer };
 export { GfmEditorAction };
