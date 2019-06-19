@@ -2,11 +2,8 @@ const initialState = {
   selected: 'Write',
 };
 
-interface IToolbarState {
-  type: string;
-}
-
-interface IToolbarAction extends IToolbarState {
+interface IToolbarAction {
+  readonly type: string;
   selected: string;
 }
 
@@ -25,6 +22,6 @@ const ToolbarAction = {
   },
 };
 
-export { IToolbarState };
-export { ToolbarReducer };
+export { IToolbarAction };
 export { ToolbarAction };
+export { ToolbarReducer };
