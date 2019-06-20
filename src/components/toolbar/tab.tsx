@@ -9,7 +9,7 @@ interface IToolbarProps {
 
 const ToolbarTab = (props: IToolbarProps) => {
   return (
-    <div>
+    <div className="cu-dashboard-board__header-filter-sort">
       <Button title="Write" key="Write" />
       <Button title="Preview" key="Preview" />
     </div>
