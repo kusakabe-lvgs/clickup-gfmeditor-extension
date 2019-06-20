@@ -3,7 +3,7 @@ import { Marked } from 'marked-ts';
 
 interface IGfmEditorProps {
   gfmEditor: { value: string };
-  canShowed: boolean;
+  canShowedPreview: boolean;
 }
 
 const GfmEditorPreview = (props: IGfmEditorProps) => {

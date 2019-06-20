@@ -13,7 +13,7 @@ interface IAppProps {
 const mapStateToProps = (state: IAppProps) => {
   return {
     gfmEditor: state.gfmEditor,
-    canShowed: state.toolbar.selected === 'Write' ? true : false,
+    canShowedWrite: state.toolbar.selected === 'Write' ? true : false,
   };
 };
 

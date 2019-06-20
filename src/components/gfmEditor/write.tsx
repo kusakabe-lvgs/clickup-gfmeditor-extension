@@ -3,7 +3,7 @@ import * as React from 'react';
 interface IGfmEditorProps {
   changeFormHandler: (params: string) => void;
   gfmEditor: { value: string };
-  canShowed: boolean;
+  canShowedWrite: boolean;
 }
 
 const GfmEditorWrite = (props: IGfmEditorProps) => {
