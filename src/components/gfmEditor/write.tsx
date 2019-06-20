@@ -7,7 +7,7 @@ interface IGfmEditorProps {
 }
 
 const GfmEditorWrite = (props: IGfmEditorProps) => {
-  return props.canShowed ? (
+  return (
     <div
       className="ql-editor"
       data-gram="false"
@@ -15,8 +15,9 @@ const GfmEditorWrite = (props: IGfmEditorProps) => {
       contentEditable={true}
       onInput={e => props.changeFormHandler((e.target as HTMLDivElement).innerText)}
       suppressContentEditableWarning={true}
+      style={{ display: props.canShowedWrite ? 'block' : 'none' }}
     />
-  ) : null;
+  );
 };
 
 export default GfmEditorWrite;

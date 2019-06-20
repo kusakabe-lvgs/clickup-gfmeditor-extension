@@ -7,14 +7,15 @@ interface IGfmEditorProps {
 }
 
 const GfmEditorPreview = (props: IGfmEditorProps) => {
-  return props.canShowed ? (
+  return (
     <div
-      className="ql-editor"
+      className="ql-editor preview"
       dangerouslySetInnerHTML={{
         __html: Marked.parse(props.gfmEditor.value),
       }}
+      style={{ display: props.canShowedPreview ? 'block' : 'none' }}
     />
-  ) : null;
+  );
 };
 
 export default GfmEditorPreview;
