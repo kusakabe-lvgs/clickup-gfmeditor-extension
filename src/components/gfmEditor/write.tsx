@@ -15,7 +15,7 @@ const GfmEditorWrite = (props: IGfmEditorProps) => {
       contentEditable={true}
       onInput={e => props.changeFormHandler((e.target as HTMLDivElement).innerText)}
       suppressContentEditableWarning={true}
-      style={{ display: props.canShowedWrite ? 'block' : 'none' }}
+      style={{ display: props.canShowedWrite ? 'block' : 'none', color: 'white' }}
     />
   );
 };
