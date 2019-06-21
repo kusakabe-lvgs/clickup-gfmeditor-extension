@@ -9,7 +9,7 @@ interface IGfmEditorProps {
 const GfmEditorWrite = (props: IGfmEditorProps) => {
   return (
     <div
-      className="ql-editor"
+      className="ql-editor ql-write"
       data-gram="false"
       data-placeholder='Description or type "/" for commands'
       contentEditable={true}
