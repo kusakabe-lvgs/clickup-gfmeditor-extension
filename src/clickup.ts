@@ -17,12 +17,14 @@ const findTargetList = () => {
 
   // DOMが取れたらeditorの置き換えをする
   if (taskCards.length) {
-    const ele: HTMLDivElement = (document.querySelector('.ql-editor') as HTMLDivElement).parentNode as HTMLDivElement;
-    App(ele);
     // toolbarは使わないので隠す
     const toolbar = document.querySelector('.cu-editor-toolbar') as HTMLDivElement;
     toolbar.style.display = 'none';
 
+    const element = document.querySelector('.ql-editor') as HTMLDivElement;
+    element.classList.remove('ql-disabled');
+
+    App(element.parentNode as HTMLDivElement);
     clearInterval(tryGetList);
   }
 };
