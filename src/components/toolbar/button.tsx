@@ -10,7 +10,9 @@ const ToolbarButton = (props: IToolbarButtonProps) => {
   return (
     <div className="cu-dt-filter">
       <div className="cu-dt-filter__item">
-        <div className="cu-dt-filter__param" onClick={() => props.changeSelected(props.title)}>{props.title}</div>
+        <div className="cu-dt-filter__param" onClick={() => props.changeSelected(props.title)}>
+          {props.title}
+        </div>
       </div>
     </div>
   );
