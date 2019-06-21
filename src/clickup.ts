@@ -19,6 +19,10 @@ const findTargetList = () => {
   if (taskCards.length) {
     const ele: HTMLDivElement = (document.querySelector('.ql-editor') as HTMLDivElement).parentNode as HTMLDivElement;
     App(ele);
+    // toolbarは使わないので隠す
+    const toolbar = document.querySelector('.cu-editor-toolbar') as HTMLDivElement;
+    toolbar.style.display = 'none';
+
     clearInterval(tryGetList);
   }
 };
