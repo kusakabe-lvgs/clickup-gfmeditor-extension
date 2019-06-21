@@ -12,7 +12,7 @@ const findTargetList = () => {
 
   // max retry数を超えると止める
   if (retryCounter >= MAX_RETRY_COUNT) {
-    clearInterval(tryGetList);
+    clearInterval(tryGetList());
   }
 
   // DOMが取れたらeditorの置き換えをする
@@ -33,8 +33,17 @@ const findTargetList = () => {
       existedEditor.innerHTML = replaceEditor.innerHTML;
     });
 
-    clearInterval(tryGetList);
+    clearInterval(tryGetList());
   }
 };
 
-const tryGetList = setInterval(findTargetList, 1000);
+const tryGetList = () => setInterval(findTargetList, 1000);
+
+tryGetList();
+
+const observer = new MutationObserver(tryGetList);
+// observer.observe((document.querySelector('.cu-dashboard-board__body-inner') as Element).firstChild as Node, {
+observer.observe(document.getElementsByClassName('.cu-dashboard-board__body-inner')[0], {
+  attributes: true,
+  childList: true,
+});
