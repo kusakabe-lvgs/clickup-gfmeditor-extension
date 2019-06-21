@@ -21,10 +21,18 @@ const findTargetList = () => {
     const toolbar = document.querySelector('.cu-editor-toolbar') as HTMLDivElement;
     toolbar.style.display = 'none';
 
-    const element = document.querySelector('.ql-editor') as HTMLDivElement;
-    element.classList.remove('ql-disabled');
+    const existedEditor = document.querySelector('.ql-editor') as HTMLDivElement;
+    existedEditor.classList.remove('ql-disabled');
 
-    App(element.parentNode as HTMLDivElement);
+    App(existedEditor.parentNode as HTMLDivElement);
+
+    // editorの変更内容をpostするための処理
+    const replaceEditor = document.querySelector('.ql-write') as HTMLDivElement;
+    replaceEditor.innerHTML = existedEditor.innerHTML;
+    replaceEditor.addEventListener('input', _ => {
+      existedEditor.innerHTML = replaceEditor.innerHTML;
+    });
+
     clearInterval(tryGetList);
   }
 };
