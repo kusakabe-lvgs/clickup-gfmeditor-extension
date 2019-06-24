@@ -1,47 +1,34 @@
 import App from './app';
 
-// DOMを取得のリトライ上限
-const MAX_RETRY_COUNT = 10;
-let retryCounter = 0;
-
-const findTargetList = () => {
-  // try数を記録する
-  retryCounter++;
-
-  const toolbar = document.querySelector('.cu-editor-toolbar') as HTMLDivElement;
-
-  // max retry数を超えると止める
-  if (retryCounter >= MAX_RETRY_COUNT) {
-    clearInterval(tryGetList());
-  }
-
-  // DOMが取れたらeditorの置き換えをする
-  if (toolbar) {
-    // toolbarは使わないので隠す
+const checkLookingTask = () => {
+  const checkRenderingTask = () => {
+    const toolbar = document.querySelector('.cu-editor-toolbar') as HTMLDivElement;
     toolbar.style.display = 'none';
 
     const existedEditor = document.querySelector('.ql-editor') as HTMLDivElement;
-    existedEditor.classList.remove('ql-disabled');
+    existedEditor.classList.add('existed-editor');
+    (existedEditor.parentNode as HTMLDivElement).classList.remove('ql-editor', 'ql-disabled');
+    existedEditor.style.display = 'none';
 
-    App(existedEditor.parentNode as HTMLDivElement);
+    const editorWrapper = document.querySelector('.cu-editor_task-view') as HTMLDivElement;
+    editorWrapper.appendChild(document.createElement('div'));
 
-    // editorの変更内容をpostするための処理
+    App(editorWrapper.lastChild as HTMLDivElement);
+
     const replaceEditor = document.querySelector('.ql-write') as HTMLDivElement;
     replaceEditor.innerHTML = existedEditor.innerHTML;
-    replaceEditor.addEventListener('input', _ => {
-      existedEditor.innerHTML = replaceEditor.innerHTML;
-    });
+  };
 
-    clearInterval(tryGetList());
-  }
+  const testObserver = new MutationObserver(checkRenderingTask);
+  const testObserveElement = document.getElementsByClassName('task-container')[0];
+  testObserver.observe(testObserveElement, {
+    childList: true,
+  });
 };
 
-const tryGetList = () => setInterval(findTargetList, 1000);
-
-tryGetList();
-
-const observer = new MutationObserver(tryGetList);
-observer.observe(document.getElementsByClassName('.cu-dashboard-board__body-inner')[0], {
-  attributes: true,
+// taskが開かれているか
+const taskObserver = new MutationObserver(checkLookingTask);
+const taskObserveElement = document.getElementsByTagName('task-keeper')[0];
+taskObserver.observe(taskObserveElement, {
   childList: true,
 });
