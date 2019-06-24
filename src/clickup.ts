@@ -1,3 +1,5 @@
+import { Marked } from 'marked-ts';
+
 import App from './app';
 
 const checkLookingTask = () => {
@@ -16,7 +18,9 @@ const checkLookingTask = () => {
     App(editorWrapper.lastChild as HTMLDivElement);
 
     const replaceEditor = document.querySelector('.ql-write') as HTMLDivElement;
-    replaceEditor.innerHTML = existedEditor.innerHTML;
+    replaceEditor.insertAdjacentHTML('afterbegin', existedEditor.innerHTML);
+    const previewEditor = document.querySelector('.preview') as HTMLDivElement;
+    previewEditor.insertAdjacentHTML('afterbegin', Marked.parse(replaceEditor.innerText));
   };
 
   const testObserver = new MutationObserver(checkRenderingTask);
