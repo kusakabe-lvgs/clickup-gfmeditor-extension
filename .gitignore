@@ -8,6 +8,8 @@
 /.bundle
 /clickup-gfmeditor/clickup.js
 /clickup-gfmeditor/clickup.js.map
+/clickup-gfmeditor/style.css
+/clickup-gfmeditor/style.css.map
 
 # Ignore all logfiles and tempfiles.
 /log/*
