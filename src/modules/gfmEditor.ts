@@ -10,6 +10,9 @@ interface IGfmEditorAction {
 const GfmEditorReducer = (state = initialState, action: IGfmEditorAction) => {
   switch (action.type) {
     case 'CHANGE_FORM_HANDLER':
+      const existedEditor = document.querySelector('.existed-editor') as HTMLDivElement;
+      existedEditor.innerHTML = action.value;
+
       return { ...state, ...{ value: action.value } };
     default:
       return state;
