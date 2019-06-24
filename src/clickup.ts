@@ -42,7 +42,6 @@ const tryGetList = () => setInterval(findTargetList, 1000);
 tryGetList();
 
 const observer = new MutationObserver(tryGetList);
-// observer.observe((document.querySelector('.cu-dashboard-board__body-inner') as Element).firstChild as Node, {
 observer.observe(document.getElementsByClassName('.cu-dashboard-board__body-inner')[0], {
   attributes: true,
   childList: true,
