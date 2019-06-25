@@ -33,9 +33,10 @@ const checkLookingTask = () => {
     });
   };
 
-  const testObserver = new MutationObserver(checkRenderingTask);
-  const testObserveElement = document.getElementsByClassName('task-container')[0];
-  testObserver.observe(testObserveElement, {
+  // taskが描画されているか
+  const taskPreviewObserver = new MutationObserver(checkRenderingTask);
+  const taskPreviewObserveElement = document.getElementsByClassName('task-container')[0];
+  taskPreviewObserver.observe(taskPreviewObserveElement, {
     childList: true,
   });
 };
