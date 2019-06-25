@@ -1,6 +1,7 @@
 .ql-write {
   width: 100%;
   line-height: 24px !important;
+  overflow: scroll !important;
   background-color: #2b343b;
   color: #FFFFFF !important;
 }
@@ -19,49 +20,12 @@
   overflow: scroll;
 
   a {
-    color: #0645ad;
+    color: #0366D6;
     text-decoration: none;
-  }
 
-  a:visited {
-    color: #0b0080;
-  }
-
-  a:hover {
-    color: #06e;
-  }
-
-  a:active {
-    color: #faa700;
-  }
-
-  a:focus {
-    outline: thin dotted;
-  }
-
-  a:hover,
-  a:active {
-    outline: 0;
-  }
-
-  ::-moz-selection {
-    background: rgba(255, 255, 0, 0.3);
-    color: #000;
-  }
-
-  ::selection {
-    background: rgba(255, 255, 0, 0.3);
-    color: #000;
-  }
-
-  a::-moz-selection {
-    background: rgba(255, 255, 0, 0.3);
-    color: #0645ad;
-  }
-
-  a::selection {
-    background: rgba(255, 255, 0, 0.3);
-    color: #0645ad;
+    &:visited {
+      color: #0366D6;
+    }
   }
 
   p {
@@ -79,7 +43,6 @@
   h5,
   h6 {
     font-weight: normal;
-    color: #111;
     line-height: 1em;
   }
 
@@ -133,16 +96,22 @@
   code,
   kbd,
   samp {
-    color: #000;
     font-family: monospace, monospace;
     _font-family: 'courier new', monospace;
     font-size: 0.98em;
   }
 
   pre {
+    padding: 10px 5px !important;
+    background-color: #282c34;
     white-space: pre;
     white-space: pre-wrap;
     word-wrap: break-word;
+  }
+
+  code {
+    padding: 3px 2px !important;
+    background-color: #282c34;
   }
 
   b,
