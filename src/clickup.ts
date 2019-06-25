@@ -4,19 +4,23 @@ import App from './app';
 
 const checkLookingTask = () => {
   const checkRenderingTask = () => {
+    // toolbarを隠す
     const toolbar = document.querySelector('.cu-editor-toolbar') as HTMLDivElement;
     toolbar.style.display = 'none';
 
+    // 既存のWYSIWYGエディタを隠す
     const existedEditor = document.querySelector('.ql-editor') as HTMLDivElement;
     existedEditor.classList.add('existed-editor');
     (existedEditor.parentNode as HTMLDivElement).classList.remove('ql-editor', 'ql-disabled');
     existedEditor.style.display = 'none';
 
+    // GFMエディタに置き換える
     const editorWrapper = document.querySelector('.cu-editor_task-view') as HTMLDivElement;
     editorWrapper.appendChild(document.createElement('div'));
 
     App(editorWrapper.lastChild as HTMLDivElement);
 
+    // エディタの中身を同期させる
     const replaceEditor = document.querySelector('.ql-write') as HTMLTextAreaElement;
     (replaceEditor as HTMLTextAreaElement).value = existedEditor.innerHTML
       .replace(/<div>|<\/div>/g, '')
