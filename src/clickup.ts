@@ -10,7 +10,7 @@ const checkLookingTask = () => {
     const existedEditor = document.querySelector('.ql-editor') as HTMLDivElement;
     existedEditor.classList.add('existed-editor');
     (existedEditor.parentNode as HTMLDivElement).classList.remove('ql-editor', 'ql-disabled');
-    // existedEditor.style.display = 'none';
+    existedEditor.style.display = 'none';
 
     const editorWrapper = document.querySelector('.cu-editor_task-view') as HTMLDivElement;
     editorWrapper.appendChild(document.createElement('div'));
