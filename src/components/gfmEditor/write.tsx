@@ -13,8 +13,8 @@ const GfmEditorWrite = (props: IGfmEditorProps) => {
       data-gram="false"
       data-placeholder='Description or type "/" for commands'
       onInput={e => props.changeFormHandler((e.target as HTMLTextAreaElement).value)}
-      rows={60}
-      style={{ display: props.canShowedWrite ? 'block' : 'none' }}
+      rows={40}
+      style={{ display: props.canShowedWrite ? 'block' : 'none', height: '300px', lineHeight: '24' }}
     />
   );
 };
