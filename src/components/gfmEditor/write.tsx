@@ -8,14 +8,13 @@ interface IGfmEditorProps {
 
 const GfmEditorWrite = (props: IGfmEditorProps) => {
   return (
-    <div
+    <textarea
       className="ql-editor ql-write"
       data-gram="false"
       data-placeholder='Description or type "/" for commands'
-      contentEditable={true}
-      onInput={e => props.changeFormHandler((e.target as HTMLDivElement).innerText)}
-      suppressContentEditableWarning={true}
-      style={{ display: props.canShowedWrite ? 'block' : 'none', color: 'white' }}
+      onInput={e => props.changeFormHandler(e.target.value)}
+      rows={60}
+      style={{ display: props.canShowedWrite ? 'block' : 'none' }}
     />
   );
 };
