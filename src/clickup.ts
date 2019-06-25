@@ -28,7 +28,6 @@ const checkLookingTask = () => {
     const lineHeight = parseInt(replaceEditor.style.lineHeight as string, 10);
     replaceEditor.addEventListener('input', e => {
       const indentionCount = (((e.target as HTMLTextAreaElement).value + '\n').match(/\n/g) as string[]).length;
-      console.log(lineHeight, indentionCount);
       replaceEditor.style.height = `${lineHeight * indentionCount}px`;
     });
   };
