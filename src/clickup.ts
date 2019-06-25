@@ -35,6 +35,11 @@ const checkLookingTask = () => {
       const indentionCount = (((e.target as HTMLTextAreaElement).value + '\n').match(/\n/g) as string[]).length;
       replaceEditor.style.height = `${lineHeight * indentionCount}px`;
     });
+
+    replaceEditor.addEventListener('focus', e => {
+      const indentionCount = (((e.target as HTMLTextAreaElement).value + '\n').match(/\n/g) as string[]).length;
+      replaceEditor.style.height = `${lineHeight * indentionCount}px`;
+    });
   };
 
   // taskが描画されているか
