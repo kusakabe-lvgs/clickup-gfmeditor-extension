@@ -6,6 +6,7 @@
   "scripts": {
     "watch:js": "parcel watch src/clickup.ts -d clickup-gfmeditor --log-level 4 --no-hmr",
     "watch:css": "parcel watch style/style.scss -d clickup-gfmeditor --log-level 4 --no-hmr",
+    "build": "parcel build src/clickup.ts -d clickup-gfmeditor && parcel build style/style.scss -d clickup-gfmeditor",
     "tslint": "tslint --fix src/**/*.{ts,tsx}",
     "prettier": "prettier --write src/**/*.{ts,tsx}"
   },
