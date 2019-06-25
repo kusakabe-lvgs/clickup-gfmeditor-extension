@@ -23,8 +23,9 @@ const checkLookingTask = () => {
     // エディタの中身を同期させる
     const replaceEditor = document.querySelector('.ql-write') as HTMLTextAreaElement;
     (replaceEditor as HTMLTextAreaElement).value = existedEditor.innerHTML
-      .replace(/<div>|<\/div>/g, '')
-      .replace(/<br>/g, '\n');
+      .replace(/<div>/g, '')
+      .replace(/<\/div>/g, '\n')
+      .replace(/<br>/g, '');
     const previewEditor = document.querySelector('.preview') as HTMLDivElement;
     previewEditor.insertAdjacentHTML('afterbegin', Marked.parse(replaceEditor.value));
 
