@@ -23,6 +23,14 @@ const checkLookingTask = () => {
       .replace(/<br>/g, '\n');
     const previewEditor = document.querySelector('.preview') as HTMLDivElement;
     previewEditor.insertAdjacentHTML('afterbegin', Marked.parse(replaceEditor.value));
+
+    // textareaの調整
+    const lineHeight = parseInt(replaceEditor.style.lineHeight as string, 10);
+    replaceEditor.addEventListener('input', e => {
+      const indentionCount = (((e.target as HTMLTextAreaElement).value + '\n').match(/\n/g) as string[]).length;
+      console.log(lineHeight, indentionCount);
+      replaceEditor.style.height = `${lineHeight * indentionCount}px`;
+    });
   };
 
   const testObserver = new MutationObserver(checkRenderingTask);
