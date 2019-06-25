@@ -12,7 +12,7 @@ const GfmEditorWrite = (props: IGfmEditorProps) => {
       className="ql-editor ql-write"
       data-gram="false"
       data-placeholder='Description or type "/" for commands'
-      onInput={e => props.changeFormHandler(e.target.value)}
+      onInput={e => props.changeFormHandler((e.target as HTMLTextAreaElement).value)}
       rows={60}
       style={{ display: props.canShowedWrite ? 'block' : 'none' }}
     />
