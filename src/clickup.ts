@@ -34,6 +34,8 @@ const checkLookingTask = () => {
       .replace(/<\/h1>/g, '\n')
       .replace(/<h2>/g, '## ')
       .replace(/<\/h2>/g, '\n')
+      .replace(/<h3>/g, '### ')
+      .replace(/<\/h3>/g, '\n')
       // <ul> はMDでは表現しない
       .replace(/<ul>/g, '')
       .replace(/<\/ul>/g, '')
