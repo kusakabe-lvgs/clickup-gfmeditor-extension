@@ -41,7 +41,10 @@ const checkLookingTask = () => {
       .replace(/<\/ul>/g, '')
       // リストをMDに変換
       .replace(/<li>/g, '- ')
-      .replace(/<\/li>/g, '\n');
+      .replace(/<\/li>/g, '\n')
+      // <> が escape されるので戻す
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>');
     const previewEditor = document.querySelector('.preview') as HTMLDivElement;
     previewEditor.insertAdjacentHTML('afterbegin', Marked.parse(replaceEditor.value));
 
