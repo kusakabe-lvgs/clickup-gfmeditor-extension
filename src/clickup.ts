@@ -1,7 +1,4 @@
-import { Marked } from 'marked-ts';
-
-import App from './app';
-import { html2markdown } from './feature/html2markdown';
+import { replaceEditor } from './feature/replaceEditor';
 
 const checkLookingTask = () => {
   const checkRenderingTask = () => {
@@ -15,30 +12,7 @@ const checkLookingTask = () => {
     (existedEditor.parentNode as HTMLDivElement).classList.remove('ql-editor', 'ql-disabled');
     existedEditor.style.display = 'none';
 
-    // GFMエディタに置き換える
-    const editorWrapper = document.querySelector('.cu-editor_task-view') as HTMLDivElement;
-    editorWrapper.appendChild(document.createElement('div'));
-
-    App(editorWrapper.lastChild as HTMLDivElement);
-
-    // エディタの中身を同期させる
-    const replaceEditor = document.querySelector('.ql-write') as HTMLTextAreaElement;
-    // TODO: decoratorとかでやりたい
-    (replaceEditor as HTMLTextAreaElement).value = html2markdown(existedEditor.innerHTML);
-    const previewEditor = document.querySelector('.preview') as HTMLDivElement;
-    previewEditor.insertAdjacentHTML('afterbegin', Marked.parse(replaceEditor.value));
-
-    // textareaの調整
-    const lineHeight = parseInt(replaceEditor.style.lineHeight as string, 10);
-    replaceEditor.addEventListener('input', e => {
-      const indentionCount = (((e.target as HTMLTextAreaElement).value + '\n').match(/\n/g) as string[]).length;
-      replaceEditor.style.height = `${lineHeight * indentionCount}px`;
-    });
-
-    replaceEditor.addEventListener('focus', e => {
-      const indentionCount = (((e.target as HTMLTextAreaElement).value + '\n').match(/\n/g) as string[]).length;
-      replaceEditor.style.height = `${lineHeight * indentionCount}px`;
-    });
+    replaceEditor(existedEditor);
   };
 
   // taskが描画されているか
