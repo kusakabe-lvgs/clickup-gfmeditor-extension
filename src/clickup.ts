@@ -22,10 +22,24 @@ const checkLookingTask = () => {
 
     // エディタの中身を同期させる
     const replaceEditor = document.querySelector('.ql-write') as HTMLTextAreaElement;
+    // TODO: decoratorとかでやりたい
     (replaceEditor as HTMLTextAreaElement).value = existedEditor.innerHTML
+      // commenteditableはdivを使って改行を表現する時があるので削除
       .replace(/<div>/g, '')
       .replace(/<\/div>/g, '\n')
-      .replace(/<br>/g, '');
+      // </div> を \n として扱うので <br> は削除
+      .replace(/<br>/g, '')
+      // 見出しをMDに変換
+      .replace(/<h1>/g, '# ')
+      .replace(/<\/h1>/g, '\n')
+      .replace(/<h2>/g, '## ')
+      .replace(/<\/h2>/g, '\n')
+      // <ul> はMDでは表現しない
+      .replace(/<ul>/g, '')
+      .replace(/<\/ul>/g, '')
+      // リストをMDに変換
+      .replace(/<li>/g, '- ')
+      .replace(/<\/li>/g, '\n');
     const previewEditor = document.querySelector('.preview') as HTMLDivElement;
     previewEditor.insertAdjacentHTML('afterbegin', Marked.parse(replaceEditor.value));
 
