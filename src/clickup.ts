@@ -1,6 +1,7 @@
 import { Marked } from 'marked-ts';
 
 import App from './app';
+import { html2markdown } from './feature/html2markdown';
 
 const checkLookingTask = () => {
   const checkRenderingTask = () => {
@@ -23,28 +24,7 @@ const checkLookingTask = () => {
     // エディタの中身を同期させる
     const replaceEditor = document.querySelector('.ql-write') as HTMLTextAreaElement;
     // TODO: decoratorとかでやりたい
-    (replaceEditor as HTMLTextAreaElement).value = existedEditor.innerHTML
-      // commenteditableはdivを使って改行を表現する時があるので削除
-      .replace(/<div>/g, '')
-      .replace(/<\/div>/g, '\n')
-      // </div> を \n として扱うので <br> は削除
-      .replace(/<br>/g, '')
-      // 見出しをMDに変換
-      .replace(/<h1>/g, '# ')
-      .replace(/<\/h1>/g, '\n')
-      .replace(/<h2>/g, '## ')
-      .replace(/<\/h2>/g, '\n')
-      .replace(/<h3>/g, '### ')
-      .replace(/<\/h3>/g, '\n')
-      // <ul> はMDでは表現しない
-      .replace(/<ul>/g, '')
-      .replace(/<\/ul>/g, '')
-      // リストをMDに変換
-      .replace(/<li>/g, '- ')
-      .replace(/<\/li>/g, '\n')
-      // <> が escape されるので戻す
-      .replace(/&lt;/g, '<')
-      .replace(/&gt;/g, '>');
+    (replaceEditor as HTMLTextAreaElement).value = html2markdown(existedEditor.innerHTML);
     const previewEditor = document.querySelector('.preview') as HTMLDivElement;
     previewEditor.insertAdjacentHTML('afterbegin', Marked.parse(replaceEditor.value));
 
