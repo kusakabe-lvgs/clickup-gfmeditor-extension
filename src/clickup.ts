@@ -21,6 +21,13 @@ const checkLookingTask = () => {
   taskPreviewObserver.observe(taskPreviewObserveElement, {
     childList: true,
   });
+
+  // 新規タスク
+  const newTaskObserver = new MutationObserver(checkRenderingTask);
+  const newTaskObserveElement = document.getElementsByTagName('cu-modal-keeper')[0];
+  newTaskObserver.observe(newTaskObserveElement, {
+    childList: true,
+  });
 };
 
 // taskが開かれているか
