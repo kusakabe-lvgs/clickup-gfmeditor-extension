@@ -44,6 +44,7 @@
   h6 {
     font-weight: normal;
     line-height: 1em;
+    white-space: pre-line;
   }
 
   h4,
@@ -154,7 +155,7 @@
 
   ul,
   ol {
-    margin: 1em 0;
+    margin-top: -3em !important;
     padding: 0 0 0 2em;
     white-space: normal;
   }
