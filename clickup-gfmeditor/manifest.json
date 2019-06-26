@@ -1,7 +1,7 @@
 {
   "name": "ClickUp GFM Editor",
   "description" : "Replace clickup editor with GFM.",
-  "version": "1.0",
+  "version": "1.0.1",
   "manifest_version": 2,
   "content_scripts": [
     {
