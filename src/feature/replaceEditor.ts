@@ -4,10 +4,11 @@ import App from '../app';
 import { html2markdown } from './html2markdown';
 
 const replaceEditor = (existedEditor: HTMLDivElement) => {
-  // GFMエディタに置き換える
+  // GFMエディタを差し込む場所を作る
   const editorWrapper = document.querySelector('.cu-editor_task-view') as HTMLDivElement;
   editorWrapper.appendChild(document.createElement('div'));
 
+  // GFMエディタに差し替える
   App(editorWrapper.lastChild as HTMLDivElement);
 
   // エディタの中身を同期させる
