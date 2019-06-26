@@ -12,22 +12,23 @@ const replaceEditor = (existedEditor: HTMLDivElement) => {
 
   // エディタの中身を同期させる
   const gfmEditor = document.querySelector('.ql-write') as HTMLTextAreaElement;
-  // TODO: decoratorとかでやりたい
   (gfmEditor as HTMLTextAreaElement).value = html2markdown(existedEditor.innerHTML);
   const previewEditor = document.querySelector('.preview') as HTMLDivElement;
   previewEditor.insertAdjacentHTML('afterbegin', Marked.parse(gfmEditor.value));
 
   // textareaの調整
-  const lineHeight = parseInt(gfmEditor.style.lineHeight as string, 10);
-  gfmEditor.addEventListener('input', e => {
-    const indentionCount = (((e.target as HTMLTextAreaElement).value + '\n').match(/\n/g) as string[]).length;
-    gfmEditor.style.height = `${lineHeight * indentionCount}px`;
-  });
-
   gfmEditor.addEventListener('focus', e => {
-    const indentionCount = (((e.target as HTMLTextAreaElement).value + '\n').match(/\n/g) as string[]).length;
-    gfmEditor.style.height = `${lineHeight * indentionCount}px`;
+    _adjustmentHeightOfForm((e.target as HTMLTextAreaElement).value, gfmEditor);
   });
+  gfmEditor.addEventListener('input', e => {
+    _adjustmentHeightOfForm((e.target as HTMLTextAreaElement).value, gfmEditor);
+  });
+};
+
+const _adjustmentHeightOfForm = (inputData: string, gfmEditor: HTMLTextAreaElement) => {
+  const lineHeight = parseInt(gfmEditor.style.lineHeight as string, 10);
+  const indentionCount = ((inputData + '\n').match(/\n/g) as string[]).length;
+  gfmEditor.style.height = `${lineHeight * indentionCount}px`;
 };
 
 export { replaceEditor };
