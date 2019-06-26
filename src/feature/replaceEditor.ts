@@ -12,8 +12,8 @@ const replaceEditor = (existedEditor: HTMLDivElement) => {
 
   // エディタの中身を同期させる
   const gfmEditor = document.querySelector('.ql-write') as HTMLTextAreaElement;
-  (gfmEditor as HTMLTextAreaElement).value = html2markdown(existedEditor.innerHTML);
   const previewEditor = document.querySelector('.preview') as HTMLDivElement;
+  gfmEditor.value = html2markdown(existedEditor.innerHTML);
   previewEditor.insertAdjacentHTML('afterbegin', Marked.parse(gfmEditor.value));
 
   // textareaの調整
